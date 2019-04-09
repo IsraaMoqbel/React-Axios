@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import axiosInstance from '../../axios';
 
 import './NewPost.css';
 
@@ -16,7 +16,7 @@ class NewPost extends Component {
             body: this.state.content,
             auther: this.state.auther
         }
-        axios.post('https://jsonplaceholder.typicode.com/posts', post)
+        axiosInstance.post('/posts', post)
         .then(res => console.log(res))
         .catch(err =>  this.setState( { error: err } ))
 

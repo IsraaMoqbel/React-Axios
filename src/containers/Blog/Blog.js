@@ -5,7 +5,8 @@ import FullPost from '../../components/FullPost/FullPost';
 import NewPost from '../../components/NewPost/NewPost';
 import './Blog.css';
 
-import axios from 'axios';
+// import axios from 'axios';
+import axiosInstance from '../../axios';
 
 class Blog extends Component {
     state= {
@@ -15,10 +16,9 @@ class Blog extends Component {
     }
     postSelectedHandler = (id) => {
         this.setState({selectedPostId:id})
-
     }
     componentDidMount() {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+        axiosInstance.get('/posts')
             .then(response => {
                 const posts = response.data.slice(0,4);
                 const updatedPosts = posts.map(post => {
